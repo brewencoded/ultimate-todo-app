@@ -1,0 +1,17 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react",
+        "lib": ["DOM"],
+        "outDir": "./dist",
+        "rootDir": "src"
+    },
+    "include": [
+        "./**/*.ts",
+        "./**/*.tsx"
+    ],
+    "references": [
+        {"path": "../web-components"},
+        {"path": "../web-todo"}
+    ]
+}

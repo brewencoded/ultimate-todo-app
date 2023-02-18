@@ -1,0 +1,33 @@
+{
+  "name": "infra",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sst dev",
+    "build": "sst build",
+    "deploy": "sst deploy",
+    "remove": "sst remove",
+    "console": "sst console",
+    "typecheck": "tsc --noEmit",
+    "dev:web:app": "npm run start:live -w packages/web-app",
+    "dev:web:components": "npm run start:live -w packages/web-components",
+    "dev:web:todo": "npm run start:live -w packages/web-todo"
+  },
+  "devDependencies": {
+    "sst": "^2.0.17",
+    "aws-cdk-lib": "2.62.2",
+    "constructs": "10.1.156",
+    "typescript": "^4.9.5",
+    "@tsconfig/node16": "^1.0.3"
+  },
+  "workspaces": [
+    "packages/core",
+    "packages/functions",
+    "packages/models",
+    "packages/web-app",
+    "packages/web-components",
+    "packages/web-todo",
+    "pacakges/models"
+  ]
+}

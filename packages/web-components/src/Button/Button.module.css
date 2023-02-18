@@ -1,0 +1,7 @@
+.common-button {
+  border-radius: .1em .1em;
+  padding: .5em .5em;
+  border: none;
+  text-decoration: none;
+  background-color: aqua;
+}
