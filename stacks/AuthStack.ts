@@ -7,19 +7,19 @@ export function Auth({ stack }: StackContext) {
     /*
      * User Pool
      */
-    const smsVerificationMessage = "Your temporary application verification code is {####}";
-    const emailVerificationSubject = "Temporary application password";
-    const emailVerificationMessage = "Your temporary application verification code is {####}";
+    const smsVerificationMessage = "Your temporary application verification code is {####}"
+    const emailVerificationSubject = "Temporary application password"
+    const emailVerificationMessage = "Your temporary application verification code is {####}"
 
     const userpoolClientRefreshTokenValidity =
-      parseInt(process.env.UserpoolClientRefreshTokenValidity!) || 180;
+      parseInt(process.env.UserpoolClientRefreshTokenValidity!) || 180
 
-    const cognitoAuthDomain = process.env.CognitoAuthDomain || "authdomain";
+    const cognitoAuthDomain = process.env.CognitoAuthDomain || "authdomain"
 
     const preSignUp = new LambdaFunction(stack, "preSignup", {
       handler: "packages/functions/src/preSignUp.handler",
       logRetention: "one_month",
-    });
+    })
 
     const userPool = new UserPool(stack, "UserPool", {
       userPoolName: prefixName,
@@ -65,17 +65,18 @@ export function Auth({ stack }: StackContext) {
       },
       accountRecovery: AccountRecovery.PHONE_AND_EMAIL,
       removalPolicy: RemovalPolicy.DESTROY,
-    });
+    })
 
     /*
      * User Pool Client
      */
     const clientReadAttributes = new ClientAttributes()
       .withStandardAttributes({ email: true })
-      .withCustomAttributes("custom:role");
+      .withCustomAttributes("custom:role")
+
     const clientWriteAttributes = new ClientAttributes()
       .withStandardAttributes({ email: true })
-      .withCustomAttributes("custom:role");
+      .withCustomAttributes("custom:role")
 
     const userPoolClient = new UserPoolClient(stack, "UserPoolClient", {
       userPool,
@@ -92,13 +93,13 @@ export function Auth({ stack }: StackContext) {
         logoutUrls: ["http://localhost:3000/logout"],
       },
       generateSecret: false,
-    });
+    })
 
     userPool.addDomain("CognitoDomain", {
       cognitoDomain: {
         domainPrefix: prefixName,
       },
-    });
+    })
 
     /*
      * Admin User Pool Client
@@ -115,7 +116,7 @@ export function Auth({ stack }: StackContext) {
       },
       supportedIdentityProviders: [UserPoolClientIdentityProvider.COGNITO],
       generateSecret: false,
-    });
+    })
 
     /*
      * Outputs
@@ -128,4 +129,6 @@ export function Auth({ stack }: StackContext) {
         CognitoAuthDomain: cognitoAuthDomain,
         CognitoClientID: userPoolClient.userPoolClientId
     })
+
+    return { userPool, userPoolClient }
 }

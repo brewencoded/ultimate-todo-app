@@ -1,0 +1,10 @@
+{
+  "name": "@uta/models",
+  "version": "1.0.0",
+  "description": "--- The purpose of this workspace is to create a group of shared models for the front and back-end, so we can create contracts between the two.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

@@ -8,7 +8,7 @@ export function Database({ stack }: StackContext) {
             todoId: "string",
             userId: "string",
             description: "string",
-            createDate: "string",
+            createdDate: "string",
             updatedDate: "string",
             dueDate: "string"
         },
