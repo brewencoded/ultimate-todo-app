@@ -1,10 +1,12 @@
 import { SSTConfig } from "sst"
 import { API } from "./stacks/APIStack"
 import { Database } from "./stacks/DatabaseStack"
-import { Web } from "./stacks/WebStack"
+import { WebApp } from "./stacks/WebAppStack"
+import { WebComponents } from "./stacks/WebComponentsStack"
+import { WebTodo } from "./stacks/WebTodoStack"
 
 export default {
-  config(_input) {
+  config() {
     return {
       name: "infra",
       region: "us-east-1",
@@ -13,6 +15,8 @@ export default {
   stacks(app) {
     app.stack(Database)
       .stack(API)
-      .stack(Web)
+      .stack(WebComponents)
+      .stack(WebTodo)
+      .stack(WebApp)
   },
 } satisfies SSTConfig
