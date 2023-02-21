@@ -2,11 +2,15 @@ import React from "react"
 import ReactDOM from "react-dom"
 import {StrictMode} from "react"
 
-import Button from './Button/Button'
+import Button from "./Button/Button"
+import Header from "./Header/Header"
+import Todo from "./Todo/Todo"
 
 const App = () => (
   <StrictMode>
-    <Button text="button" onClick={() => null}/>
+    <Button text="button" />
+    <Header />
+    <Todo title="Test" description="This is a description" />
   </StrictMode>
 )
 

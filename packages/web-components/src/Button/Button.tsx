@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ButtonCss from './Button.module.css'
+import {default as MaterialButton} from '@mui/material/Button'
 
 export type ButtonProps = {
     text?: string
@@ -8,9 +8,7 @@ export type ButtonProps = {
 }
 
 const Button = (props: ButtonProps) => (
-    <div className={ButtonCss["common-button"]} onClick={props.onClick}>
-        {props.text}
-    </div>
+    <MaterialButton onClick={props.onClick} variant="contained">{props.text}</MaterialButton>
 )
 
 export default Button

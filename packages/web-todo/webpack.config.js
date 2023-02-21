@@ -43,9 +43,11 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "todo",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        components: "components@http://localhost:3002/remoteEntry.js"
+      },
       exposes: {
-        "./Todo": "./src/Todo.tsx"
+        "./TodoApp": "./src/TodoApp.tsx"
       },
       shared: {
         ...deps,

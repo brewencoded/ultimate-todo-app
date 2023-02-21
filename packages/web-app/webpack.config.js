@@ -43,7 +43,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "host",
       filename: "remoteEntry.js",
-      remotes: {
+      remotes: { // TODO: SST should provide the endpoints for these remotes
         todo: "todo@http://localhost:3001/remoteEntry.js",
         components: "components@http://localhost:3002/remoteEntry.js"
       },
